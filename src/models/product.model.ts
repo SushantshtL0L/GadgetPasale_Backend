@@ -3,10 +3,10 @@ import { Schema, model, Document } from "mongoose";
 export interface IProduct extends Document {
   name?: string;
   description?: string;
-  condition?: "new" | "thrift";
+  condition?: "new" | "used";
   price?: number;
   brand?: string;
-  size?: string;
+  storage?: string;
   color?: string;
   image: string;
   seller: Schema.Types.ObjectId;
@@ -32,7 +32,7 @@ const productSchema = new Schema<IProduct>(
       type: Number,
       required: false,
     },
-    size: {
+    storage: {
       type: String,
       required: false,
     },
@@ -42,7 +42,7 @@ const productSchema = new Schema<IProduct>(
     },
     condition: {
       type: String,
-      enum: ["new", "thrift"],
+      enum: ["new", "used"],
       required: false,
     },
     image: {
