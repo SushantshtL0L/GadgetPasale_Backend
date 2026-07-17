@@ -11,6 +11,9 @@ export interface IProduct extends Document {
   image: string;
   seller: Schema.Types.ObjectId;
   category?: Schema.Types.ObjectId;
+  ram?: string;
+  batteryHealth?: string;
+  warranty?: string;
 }
 
 const productSchema = new Schema<IProduct>(
@@ -43,6 +46,18 @@ const productSchema = new Schema<IProduct>(
     condition: {
       type: String,
       enum: ["new", "used"],
+      required: false,
+    },
+    ram: {
+      type: String,
+      required: false,
+    },
+    batteryHealth: {
+      type: String,
+      required: false,
+    },
+    warranty: {
+      type: String,
       required: false,
     },
     image: {
