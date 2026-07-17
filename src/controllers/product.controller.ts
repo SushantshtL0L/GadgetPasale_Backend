@@ -4,7 +4,7 @@ import { ProductService } from "../services/product.service";
 export class ProductController {
   static async createProduct(req: Request, res: Response) {
     try {
-      const { name, description, condition, price, brand, storage, color, category } = req.body;
+      const { name, description, condition, price, brand, storage, color, category, ram, batteryHealth, warranty } = req.body;
       const image = req.file ? `/item_photos/${req.file.filename}` : "";
 
       if (!image) {
@@ -24,6 +24,9 @@ export class ProductController {
         image,
         seller: (req as any).user.id,
         category,
+        ram,
+        batteryHealth,
+        warranty,
       });
 
       res.status(201).json({
